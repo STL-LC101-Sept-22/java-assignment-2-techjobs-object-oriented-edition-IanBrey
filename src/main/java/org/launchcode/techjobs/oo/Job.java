@@ -28,6 +28,21 @@ public class Job {
     }
 
     @Override
+    public String toString() {
+        String nameString = (getName() != "") ? name : "Data not available";
+        String employerString = (getEmployer().getValue() != "") ? getEmployer().getValue() : "Data not available";
+        String locationString = (getLocation().getValue() != "") ? getLocation().getValue() : "Data not available";
+        String positionTypeString = (getPositionType().getValue() != "") ? getPositionType().getValue() : "Data not available";
+        String coreCompetencyString = (getCoreCompetency().getValue() != "") ? getCoreCompetency().getValue() : "Data not available";
+        String jobString = "\nID: " + getId() + "\nName: " + nameString + "\nEmployer: " + employerString + "\nLocation: " + locationString + "\nPosition Type: " + positionTypeString + "\nCore Competency: " + coreCompetencyString + "\n";
+
+        if (nameString == "Data not available" && employerString == "Data not available" && locationString == "Data not available" && positionTypeString == "Data not available" && coreCompetencyString == "Data not available") {
+            return "OOPS! this job oes not seem to exist.";
+        }
+        return jobString;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
